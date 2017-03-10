@@ -11,7 +11,7 @@ body {
 nav {
     word-spacing: 10px;
 }
-input[type=checkbox]{
+span{
     display: block
 }
 input[type=submit]{
