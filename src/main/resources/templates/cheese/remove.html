@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
-<body>
+<body class="container">
 
 <h1 th:text="${title}">Default Title</h1>
 
@@ -12,9 +12,10 @@
 
 
 <form method="post">
-    <span th:each="cheese : ${cheeses}">
-        <input type="checkbox" name="cheeseName" th:value="${cheese.getKey()}" th:text="${cheese.getKey()}" />
-    </span>
+    <div th:each="cheese : ${cheeses}" class="checkbox">
+        <input type="checkbox" name="cheeseIds" th:value="${cheese.getCheeseId()}" th:id="${cheese.getCheeseId()}" />
+        <label th:for="${cheese.getCheeseId()}" th:text="${cheese.getName()}"></label>
+    </div>
     <input type="submit" value="Remove Cheese" />
 </form>
 
