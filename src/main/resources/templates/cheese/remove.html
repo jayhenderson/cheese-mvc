@@ -10,14 +10,14 @@
 
 <p th:unless="${cheeses} and ${cheeses.size()}">no cheese :(</p>
 
-
-<form method="post">
-    <div th:each="cheese : ${cheeses}" class="checkbox">
-        <input type="checkbox" name="cheeseIds" th:value="${cheese.getCheeseId()}" th:id="${cheese.getCheeseId()}" />
-        <label th:for="${cheese.getCheeseId()}" th:text="${cheese.getName()}"></label>
-    </div>
-    <input type="submit" value="Remove Cheese" />
-</form>
-
+<div class="container">
+    <form method="post">
+        <div th:each="cheese : ${cheeses}" class="checkbox">
+            <input type="checkbox" name="cheeseIds" th:value="${cheese.getCheeseId()}" th:id="${cheese.getCheeseId()}" />
+            <label th:for="${cheese.getCheeseId()}" th:text="${cheese.getName()}"></label>
+        </div>
+        <input type="submit" value="Remove Cheese" />
+    </form>
+</div>
 </body>
 </html>
