@@ -1,5 +1,8 @@
 package org.launchcode.models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -8,12 +11,16 @@ import javax.validation.constraints.Size;
 /**
  * Created by J on 3/23/2017.
  */
+@Entity
 public class Cheese {
+
+    @Id
+    @GeneratedValue
+    private int id;
 
     @NotNull
     @Size(min = 3, max = 15)
     private String name;
-
 
     @NotNull
     @Size(min=1, message = "Description must not be empty")
@@ -25,18 +32,15 @@ public class Cheese {
     @Max(5)
     private int rating;
 
-    private int cheeseId;
-    private static int nextId = 1;
-
     public Cheese(String name, String description) {
-        this();
         this.name = name;
         this.description = description;
     }
 
-    public Cheese() {
-        cheeseId = nextId;
-        nextId++;
+    public Cheese() {}
+
+    public int getId() {
+        return id;
     }
 
     public String getName() {
@@ -53,14 +57,6 @@ public class Cheese {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public int getCheeseId() {
-        return cheeseId;
-    }
-
-    public void setCheeseId(int cheeseId) {
-        this.cheeseId = cheeseId;
     }
 
     public CheeseType getType() {
